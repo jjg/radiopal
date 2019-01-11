@@ -13,8 +13,20 @@ Looks like the Raspberry Pi *can* to PWM.  That being the case all that is neede
 
 ## Hardware
 
+### Components
+
 * [Raspberry Pi 3 Model A+](https://www.raspberrypi.org/products/raspberry-pi-3-model-a-plus/)
 * SD Card (the larger the better)
+* 1-10VDC Linear voltmeter
+* PN2907 General Purpose transistor
+* 27k resistor
+* Zener diode
+* 12VDC power supply
+
+### Configuration
+
+(schematic goes here)
+
 
 ## Software
 
@@ -126,6 +138,39 @@ Add the following to the crontab:
 `*/5 * * * * /usr/bin/mpc ls | /usr/bin/mpc add`
 ```
 
+### Firmware
+
+Python script to test driving the meter:
+
+```
+import RPi.GPIO as GPIO
+from time import sleep
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(25, GPIO.OUT)    # set GPIO 25 as output for the PWM signal
+D2A = GPIO.PWM(25, 1000)    # create object D2A for PWM on port 25 at 1KHz
+D2A.start(0)                # start the PWM with a 0 percent duty cycle (off)
+
+try:
+
+    while True:
+        dutycycle = input('Enter a duty cycle percentage from 0-100 : ')
+        print "Duty Cycle is : {0}%".format(dutycycle)
+        D2A.ChangeDutyCycle(dutycycle)
+        sleep(2)
+
+except (KeyboardInterrupt, ValueError, Exception) as e:
+    print(e)
+    D2A.stop()     # stop the PWM output
+    GPIO.cleanup() # clean up GPIO on CTRL+C exit
+
+
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()
+```
 
 
 # References
@@ -137,3 +182,4 @@ Add the following to the crontab:
 * [Arduino Drum Machine (example of resistor DAC)](http://little-scale.blogspot.com/2008/04/arduino-drum-machine.html)
 * [GPIO - Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/usage/gpio/)
 * [HOWTO: Add an analog output to the Pi](https://www.raspberrypi.org/forums/viewtopic.php?p=833519)
+* [PN2907 Transistor Datasheet](http://www.mouser.com/ds/2/149/pn2907-305713.pdf)

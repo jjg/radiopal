@@ -18,10 +18,11 @@ Looks like the Raspberry Pi *can* to PWM.  That being the case all that is neede
 * [Raspberry Pi 3 Model A+](https://www.raspberrypi.org/products/raspberry-pi-3-model-a-plus/)
 * SD Card (the larger the better)
 * 1-10VDC Linear voltmeter
-* PN2907 General Purpose transistor
+* MPS2222 General Purpose NPN Transistor
 * 27k resistor
 * Zener diode
 * 12VDC power supply
+* 12VDC to 5VDC converter (3A or better)
 
 ### Configuration
 
@@ -182,4 +183,9 @@ if __name__ == '__main__':
 * [Arduino Drum Machine (example of resistor DAC)](http://little-scale.blogspot.com/2008/04/arduino-drum-machine.html)
 * [GPIO - Raspberry Pi Documentation](https://www.raspberrypi.org/documentation/usage/gpio/)
 * [HOWTO: Add an analog output to the Pi](https://www.raspberrypi.org/forums/viewtopic.php?p=833519)
-* [PN2907 Transistor Datasheet](http://www.mouser.com/ds/2/149/pn2907-305713.pdf)
+* [MPS2222 General Purpose NPN Transistor](https://www.onsemi.com/pub/Collateral/MPS2222-D.PDF)
+* [What is the maximum current the GPIO pins can output?](https://raspberrypi.stackexchange.com/questions/9298/what-is-the-maximum-current-the-gpio-pins-can-output)
+* [Transistor Base Resistor Calculator](https://www.petervis.com/GCSE_Design_and_Technology_Electronic_Products/transistor_base_resistor_calculator/transistor_base_resistor_calculator.html)
+* [What is the Beta of a Transistor?](http://www.learningaboutelectronics.com/Articles/What-is-beta-of-a-transistor)
+* [Transistors and PWM](https://electronics.stackexchange.com/questions/30737/transistors-and-pwm)
+

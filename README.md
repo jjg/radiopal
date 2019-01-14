@@ -188,4 +188,5 @@ if __name__ == '__main__':
 * [Transistor Base Resistor Calculator](https://www.petervis.com/GCSE_Design_and_Technology_Electronic_Products/transistor_base_resistor_calculator/transistor_base_resistor_calculator.html)
 * [What is the Beta of a Transistor?](http://www.learningaboutelectronics.com/Articles/What-is-beta-of-a-transistor)
 * [Transistors and PWM](https://electronics.stackexchange.com/questions/30737/transistors-and-pwm)
+* [Find size and free speace of the filesystem](https://stackoverflow.com/questions/4260116/find-size-and-free-space-of-the-filesystem-containing-a-given-file)
 
